@@ -1,8 +1,12 @@
 module Platform
   class Announcements < Grape::API
-    namespace :announcements do
-      get do
-        { message: 'hello' }
+    resource :announcements do
+      params do
+        requires :announcement, type: Hash
+      end
+
+      post do
+        @layer.send_announcement(params[:announcement])
       end
     end
   end
