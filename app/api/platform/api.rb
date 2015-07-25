@@ -15,5 +15,6 @@ module Platform
 
     mount Announcements
     mount Conversations
+    mount Users
   end
 end
