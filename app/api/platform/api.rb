@@ -4,7 +4,9 @@ module Platform
 
     # Rescue any raised Layer Api errors
     rescue_from Layer::Api::Error do |e|
-      rack_response({ 'error' => "#{e.response.body}" }.to_json, e.response.status)
+      rack_response(
+        { 'error' => "#{e.response.body}" }.to_json, e.response.status
+      )
     end
 
     before do
@@ -12,5 +14,6 @@ module Platform
     end
 
     mount Announcements
+    mount Conversations
   end
 end
